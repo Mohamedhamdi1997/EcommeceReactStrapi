@@ -1,6 +1,10 @@
+body {
+  margin: 0;
+}
+
 .app{
   overflow: hidden;
-  background: black;
+  background: gray;
 }
 .app .link{
   color: inherit;
