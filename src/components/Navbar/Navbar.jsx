@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlinedIcon';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link } from 'react-router-dom';
 import "./Navbar.css"
 import Cart from "../Cart/Cart";
@@ -11,7 +11,7 @@ function Navbar() {
   const [open, setOpen] = useState(false)
   const products = useSelector((state) => state.cart.products); 
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [SreenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   
   useEffect(() => {
     const changeWidth = () => {
@@ -52,7 +52,7 @@ function Navbar() {
   ]
   return (
     <div className="navbar">
-      {(sreenWidth > 901) && (
+      {(screenWidth > 900) && (
         <div className="wrapper">
            <div className="left"> 
            <div className="item"> 
@@ -71,7 +71,6 @@ function Navbar() {
            <Link className="link" to="/products/4">Biscuits</Link> 
            </div>
            </div>
-
            <div className="center"> 
            <Link className="link" to="/">CAKE STORE</Link> 
            </div>
@@ -87,13 +86,23 @@ function Navbar() {
             <ShoppingCartOutlinedIcon />
             <span>{products.length}</span> 
             </div>  
+            </div>  
+         </div>
+         </div>  
+      )}
+      {(screenWidth < 901) && (
+        <div className="mobielWrapper">
+           <Link className="link" to="/">CAKE STORE</Link>   
+            <div className="cartIcon" onClick={() => setOpen(!open)}>
+            <ShoppingCartOutlinedIcon />
+            <span>{products.length}</span> 
+            </div>  
             <div className="menuIcon">
               {toggleMenu
                ? <closeIcon onClick={() => setToggleMenu(false)} />
                : <MenuIcon onClick={() => setToggleMenu(true)} />
               } 
             </div>
-
             {toggleMenu && (
               <div className="mobileItem">
                 {navData.map((nav) => 
@@ -101,14 +110,14 @@ function Navbar() {
                  onClick={() => setToggleMenu(false)} key={nav.id}>{nav.title}</Link>  
                   )} 
                </div> 
-            )}
-            {open && <Cart/>}
-            </div>  
-         </div>
+            )}  
+
+            {open && <Cart/>}  
+            
+       
          </div>  
       )}
     </div>
   )
 }
-
 export default Navbar

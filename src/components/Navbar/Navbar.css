@@ -63,3 +63,50 @@
     display: none;
 }
 
+@media  screen and (max-width: 900px) {
+    .mobileWrapper {
+        padding: 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .mobileRight {
+        display: flex;
+        gap: 10px;
+    }
+    .mobileWrapper .cartIcon {
+        position: absolute;
+        right: 60px;
+        top: 25px;
+        padding: 3px;
+    }
+    .mobileWrapper .cartIcon:hover {
+        background: lightgray;
+        border-radius: 50%;
+    }
+    .mobileItem {
+        background: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        z-index: 10;
+    }
+    .mobileItem a {
+        padding: 15px 0;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        cursor: pointer;
+    }
+    .mobileItem a:hover {
+       background-color: #2f3a34df;
+       color: white;
+    }
+}
+    
+
+
